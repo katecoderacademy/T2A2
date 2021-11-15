@@ -1,0 +1,33 @@
+<%= form_with model: @course do |form|  %>
+     
+    
+    <div><%= form.label :title %>
+    <%= form.text_field :title %></div>
+
+
+    <div><%= form.label :description %>
+    <%= form.text_area :description %></div>
+
+    <div><%= form.label :time %>
+    <%= form.datetime_field :time %> </div>
+
+    <div><%= form.label :fee %>
+    <%= form.text_field :fee %></div>
+
+    <div><%= form.label :instructor_name %>
+    <%= form.text_field :instructor_name %></div>
+    
+    <div><%= form.label :practice_management %>
+    <%= form.number_field :practice_management, min: 0, max: 10 %></div>
+        <div><%= form.label :ethics %></div>
+        <div><%= form.number_field :ethics, min: 0, max: 10 %>
+        <%= form.label :professional_skills %></<div>
+    <div><%= form.number_field :professional_skills, min: 0, max: 10 %>
+        <%= form.label :course_category %></div>
+    <%= form.number_field :course_category, min: 0, max: 10 %>
+  <div>
+    <%= form.submit %>
+  </div>
+
+
+<% end %>

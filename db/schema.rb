@@ -10,10 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_042552) do
+ActiveRecord::Schema.define(version: 2021_11_15_052120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "address_line_1", null: false
+    t.string "address_line_2"
+    t.string "suburb", null: false
+    t.string "state", null: false
+    t.integer "postcode", null: false
+    t.string "address_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "users_id"
+    t.index ["address_id"], name: "index_addresses_on_address_id"
+    t.index ["users_id"], name: "index_addresses_on_users_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "fee"
+    t.datetime "time"
+    t.boolean "online"
+    t.string "instructor_name"
+    t.decimal "practice_management"
+    t.decimal "substantive_law"
+    t.decimal "ethics"
+    t.decimal "professional_skills"
+    t.string "course_category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "course_id"
+    t.index ["course_id"], name: "index_courses_on_course_id", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +55,20 @@ ActiveRecord::Schema.define(version: 2021_11_15_042552) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "phone_number", default: "", null: false
+    t.string "address_id"
+    t.string "user_id"
+    t.boolean "instructor"
+    t.boolean "admin"
+    t.bigint "courses_id"
+    t.index ["courses_id"], name: "index_users_on_courses_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["user_id"], name: "index_users_on_user_id"
   end
 
+  add_foreign_key "addresses", "users", column: "users_id"
+  add_foreign_key "users", "courses", column: "courses_id"
 end
