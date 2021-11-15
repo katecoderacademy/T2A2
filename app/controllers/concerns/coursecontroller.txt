@@ -1,0 +1,64 @@
+class CourseController < ApplicationController
+    def index
+        @course = Course.all
+      end
+    
+      def show
+        @course = Course.find_by(id: params[:id])
+        # @brick = Brick.find(params[:id])
+      end
+      
+      def new
+        @course = Course.new
+      end
+    
+      def create
+        @course = current_user.courses.new(course_params)
+    
+    
+        if @course.save 
+          redirect_to @course
+        else
+          render :new
+             
+        end
+      end
+      
+      def edit
+      end
+    
+      def update
+        if @course.update(course_params)
+    
+        redirect_to @course
+        else
+          render :edit
+    
+        end
+      end
+      
+      def destroy
+        @course.destroy
+    
+        redirect_to root_path
+    
+    
+      end
+    
+    
+    
+    
+      private
+    
+      def find_brick
+        @course = course.find(params[:id])
+      end
+      def course_params
+        params.require(:course).permit(:name, :description, :price, :category_id) #FIX THIS
+      end
+    
+    
+
+
+
+end

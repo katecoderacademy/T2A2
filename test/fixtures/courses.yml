@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  fee: 1
+  time: 2021-11-15 16:09:11
+  online: false
+  address_id: MyString
+  instructor_name: MyString
+  practice_management: 9.99
+  substantive_law: 9.99
+  ethics: 9.99
+  professional_skills: 9.99
+  course_category: MyString
+  user_id: MyString
+
+two:
+  title: MyString
+  description: MyText
+  fee: 1
+  time: 2021-11-15 16:09:11
+  online: false
+  address_id: MyString
+  instructor_name: MyString
+  practice_management: 9.99
+  substantive_law: 9.99
+  ethics: 9.99
+  professional_skills: 9.99
+  course_category: MyString
+  user_id: MyString
