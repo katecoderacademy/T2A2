@@ -10,6 +10,8 @@
 
     <div><%= form.label :time %>
     <%= form.datetime_field :time %> </div>
+        <div><%= form.label :duration %>
+    <%= form.time_field :duration %> </div>
 
     <div><%= form.label :fee %>
     <%= form.text_field :fee %></div>
@@ -19,13 +21,19 @@
     
     <div><%= form.label :practice_management %>
     <%= form.number_field :practice_management, min: 0, max: 10 %></div>
-        <div><%= form.label :ethics %></div>
-        <div><%= form.number_field :ethics, min: 0, max: 10 %>
-        <%= form.label :professional_skills %></<div>
-    <div><%= form.number_field :professional_skills, min: 0, max: 10 %>
-        <%= form.label :course_category %></div>
-    <%= form.number_field :course_category, min: 0, max: 10 %>
-  <div>
+        <div><%= form.label :ethics %>
+        <%= form.number_field :ethics, min: 0, max: 10 %></div>
+        <div><%= form.label :professional_skills %>
+    <%= form.number_field :professional_skills, min: 0, max: 10 %></div>
+        
+        
+        
+        <div><%= form.label :substantive_law %>
+    <%= form.number_field :substantive_law, min: 0, max: 10 %></div>
+
+    <div><%= form.label :course_category %>
+    <%= form.text_area :course_category, min: 0, max: 10 %></div>
+  
     <%= form.submit %>
   </div>
 

@@ -1,18 +1,84 @@
 class CoursesController < ApplicationController
-  def index
-    @course = Course.all
-  end
-  def create
-    @course = current_user.courses.new(course_params)
+#   def index
+#     @Course = Course.all
+#   end
+#   def create
+#     @Course = current_user.Bricks.new(Brick_params)
 
 
-    if @course.save 
-      redirect_to @course
-    else
-      render :new
+#     if @Course.save 
+#       redirect_to @Course
+#     else
+#       render :new
          
-    end
-  end
+#     end
+#   end
 
+
+# end
+
+
+before_action :authenticate_user!, except: %i[index show]
+before_action :find_course, only: %i[show edit update destroy]
+
+def index
+  @courses = Course.all
+end
+
+def show
+  @course = Course.find(params[:id])
+end
+def new
+  @course = Course.new
+end
+
+def create
+  @course = current_user.courses.new(course_params)
+
+
+  if @course.save 
+    redirect_to @course
+  else
+    render :back
+    flash[:info] = "Something is wrong, try again."
+       
+  end
+end
+
+
+
+def edit
+end
+
+def update
+  if @course.update(course_params)
+
+  redirect_to @course
+  else
+    render :edit
+
+  end
+end
+
+
+def destroy
+  @course.destroy
+
+  redirect_to root_path
+
+
+end
+
+
+
+
+private
+
+def find_course
+  @course = Course.find(params[:id])
+end
+def course_params
+   params.require(:course).permit(:title, :time, :duration, :description, :fee, :online, :instructor_name, :practice_management, :substantive_law, :ethics, :professional_skills, :course_category)
+end
 
 end

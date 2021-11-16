@@ -1,2 +1,12 @@
 <h1>Courses#index</h1>
-<p>Find me in app/views/courses/index.html.erb</p>
+
+<% @courses.each do |course| %>
+  <h3><%= course.name %></h3>
+  <p><%= course.description %></p>
+
+  <%= link_to 'View', course_path(course) %>
+  <% if user_signed_in? && current_user.id == course.user.id %>
+    <%= link_to 'Edit', edit_course_path(course) %>
+    <%= link_to 'Delete', course_path(course), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>
