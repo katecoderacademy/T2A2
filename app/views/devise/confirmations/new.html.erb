@@ -6,7 +6,31 @@
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number %>
+
   </div>
+
+<%= form.fields_for :addresses do |addresses_form| %>
+
+        <%= addresses_form.label :address_line_1 %>
+        <%= addresses_form.text_field :address_line_1 %>
+
+        <%= addresses_form.label :address_line_2 %>
+        <%= addresses_form.text_field :address_line_2 %>
+        <%= addresses_form.label :suburb %>
+        <%= addresses_form.text_field :suburb %>
+        <%= addresses_form.label :state %>
+        <%= addresses_form.text_field :state %>
+        <%= addresses_form.label :postcode %>
+        <%= addresses_form.text_field :postcode %>
+
+    <% end %>
+
 
   <div class="actions">
     <%= f.submit "Resend confirmation instructions" %>

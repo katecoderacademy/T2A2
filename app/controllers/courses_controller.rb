@@ -20,7 +20,6 @@ def create
   if @course.save 
     redirect_to @course
   else
-    render :back
     flash[:info] = "Something is wrong, try again."
        
   end

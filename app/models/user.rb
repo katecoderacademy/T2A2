@@ -6,12 +6,13 @@ class User < ApplicationRecord
 
          has_many :courses, dependent: :destroy
          has_many :addresses
+         accepts_nested_attributes_for :addresses
          #has_many :instructor_id, through :course_id
          
          
-         validates :first_name, presence: true, length: { in: 2..40 }
-         validates :last_name, presence: true, length: { in: 2..40 }
-         validates :email, uniqueness: true
-         validates :phone_number, length: { in: 6..20 }
+        #  validates :first_name, presence: true, length: { in: 2..40 }
+        #  validates :last_name, presence: true, length: { in: 2..40 }
+        #  validates :email, uniqueness: true
+        #  validates :phone_number, length: { in: 6..20 }
 
 end

@@ -1,2 +1,10 @@
-<h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
+<h1><%= @course.title %></h1>
+ <h3><%= @course.title %></h3>
+  <p><%= @course.description %></p>
+  <p><%= @course.fee %></p>
+    <p><%= @course.time %></p>
+    <p><%= @course.instructor_name %></p>
+    <p>Practice Management Skills <%= @course.practice_management %> points</p>
+    <p>Substantive Law: <%= @course.substantive_law %> points</p>
+    <p>Ethics: <%= @course.ethics %> points</p>
+    <p>Professional Skills: <%= @course.professional_skills %> points</p>
