@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-    belongs_to :users
+    belongs_to :user
     has_one :category_name
 
 

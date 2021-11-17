@@ -1,23 +1,4 @@
 class CoursesController < ApplicationController
-#   def index
-#     @Course = Course.all
-#   end
-#   def create
-#     @Course = current_user.Bricks.new(Brick_params)
-
-
-#     if @Course.save 
-#       redirect_to @Course
-#     else
-#       render :new
-         
-#     end
-#   end
-
-
-# end
-
-
 before_action :authenticate_user!, except: %i[index show]
 before_action :find_course, only: %i[show edit update destroy]
 
@@ -78,7 +59,7 @@ def find_course
   @course = Course.find(params[:id])
 end
 def course_params
-   params.require(:course).permit(:title, :time, :duration, :description, :fee, :online, :instructor_name, :practice_management, :substantive_law, :ethics, :professional_skills, :course_category)
+   params.require(:course).permit(:title, :time, :duration, :description, :fee, :online, :instructor_name, :practice_management, :substantive_law, :ethics, :professional_skills, :course_category, :user_id)
 end
 
 end
