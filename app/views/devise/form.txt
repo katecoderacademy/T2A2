@@ -1,0 +1,15 @@
+<%= f.fields_for :addresses do |addresses_form| %>
+
+        <%= addresses_form.label :address_line_1 %>
+        <%= addresses_form.text_field :address_line_1 %>
+
+        <%= addresses_form.label :address_line_2 %>
+        <%= addresses_form.text_field :address_line_2 %>
+        <%= addresses_form.label :suburb %>
+        <%= addresses_form.text_field :suburb %>
+        <%= addresses_form.label :state %>
+        <%= addresses_form.text_field :state %>
+        <%= addresses_form.label :postcode %>
+        <%= addresses_form.text_field :postcode %>
+
+<% end %>
