@@ -47,6 +47,6 @@
 
 
 <%=
-    f.time_field :my_time_field,
+    form.time_field :my_time_field,
       value: @model_instance.my_time_field.strftime("%H:%M")
   %>
