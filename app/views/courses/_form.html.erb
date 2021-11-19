@@ -8,8 +8,10 @@
     <div><%= form.label :description %>
     <%= form.text_area :description %></div>
 
-    <div><%= form.label :time %>
-    <%= form.datetime_field :time %> </div>
+    <div><%= form.label :start_time %>
+    <%= form.datetime_field :start_time %> </div>
+        <div><%= form.label :end_time %>
+    <%= form.datetime_field :end_time %> </div>
         <div><%= form.label :duration %>
     <%= form.time_field :duration %> </div>
 
@@ -18,6 +20,8 @@
 
     <div><%= form.label :instructor_name %>
     <%= form.text_field :instructor_name %></div>
+        <div><%= form.label :instructor_role %>
+    <%= form.text_field :instructor_role %></div>
     
     <div><%= form.label :practice_management %>
     <%= form.number_field :practice_management, min: 0, max: 10 %></div>

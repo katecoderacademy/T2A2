@@ -4,19 +4,19 @@ class Course < ApplicationRecord
     has_one :address, through: :user
     
     #need to validate here to only proceed IF the instructor? = true
-    validates :title, presence: true, length:  { in: 4..40 }    
+    # validates :title, presence: true, length:  { in: 4..40 }    
     
-    validates :description, presence: true, length: { in: 30..4000 }
+    # validates :description, presence: true, length: { in: 30..4000 }
     
-    validates :fee, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    # validates :fee, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-    validates :ethics, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    # validates :ethics, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-    validates :professional_skills, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    # validates :professional_skills, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-    validates :substantive_law, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    # validates :substantive_law, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-    validates :ethics, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    # validates :ethics, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
  
         # def required_details_for_offline_course
         #     if :online == false && :address_line_1 == nil

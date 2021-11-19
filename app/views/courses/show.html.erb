@@ -1,10 +1,19 @@
 <h1><%= @course.title %></h1>
- <h3><%= @course.title %></h3>
+
   <p><%= @course.description %></p>
   <p><%= @course.fee %></p>
-    <p><%= @course.time %></p>
+    <p><%= @course.online %></p>
+    <p><%= @course.online %></p>    
+    <p><%= @course.start_time %></p>
+        <p><%= @course.end_time %></p>
     <p><%= @course.instructor_name %></p>
+        <p><%= @course.instructor_role %></p>
+  
+    <p>
     <p>Practice Management Skills <%= @course.practice_management %> points</p>
     <p>Substantive Law: <%= @course.substantive_law %> points</p>
     <p>Ethics: <%= @course.ethics %> points</p>
-    <p>Professional Skills: <%= @course.professional_skills %> points</p>
+    <p>Professional Skills: <%= @course.professional_skills %> points</p></p>
+
+    
+<a href="<%= @course.url %>" target="_blank"><span class="icon icon-github"></span>Link to Course</a>

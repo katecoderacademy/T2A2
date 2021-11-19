@@ -20,7 +20,8 @@ def create
   if @course.save 
     redirect_to @course
   else
-    flash[:info] = "Something is wrong, try again."
+    puts @course.errors.full_messages
+    puts "something goes wrong"
        
   end
 end
@@ -58,7 +59,7 @@ def find_course
   @course = Course.find(params[:id])
 end
 def course_params
-   params.require(:course).permit(:title, :time, :duration, :description, :fee, :online, :instructor_name, :practice_management, :substantive_law, :ethics, :professional_skills, :course_category, :user_id)
+   params.require(:course).permit(:title, :start_time, :end_time, :url, :instructor_role, :duration, :description, :fee, :online, :instructor_name, :practice_management, :substantive_law, :ethics, :professional_skills, :course_category, :user_id)
 end
 
 end
