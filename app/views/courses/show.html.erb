@@ -18,3 +18,6 @@
 
     
 <a href="<%= @course.url %>" target="_blank">Link to Course</a>
+<%= button_to "Add #{course.name} to Account", enrollment_path(:course_id => course.id)  %>
+ <%= link_to "Add to Account", enrollment_add_path(:id => enrollment), method: :post %>
+ <%= link_to "Remove from Account", enrollment_path(enrollment_item), method: :delete %>
