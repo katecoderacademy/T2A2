@@ -60,3 +60,5 @@ gem 'devise'
 
 # adding cloundinary to manage images
 gem 'cloudinary'
+
+gem "aws-sdk-s3", "~> 1.106"

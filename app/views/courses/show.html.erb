@@ -7,6 +7,7 @@
     <p><%= @course.start_time %></p>
         <p><%= @course.end_time %></p>
     <p><%= @course.instructor_name %></p>
+    <p><%= image_tag(course.picture), if course.picture.attached? %></p>
         <p><%= @course.instructor_role %></p>
   
     <p>

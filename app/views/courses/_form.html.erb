@@ -37,7 +37,11 @@
 
     <div><%= form.label :course_category %>
     <%= form.text_area :course_category, min: 0, max: 10 %></div>
-  
+        <div><%= form.label :picture %>
+    <%= form.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %></div>
+
+
+
     <%= form.submit %>
   </div>
 
