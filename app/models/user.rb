@@ -7,6 +7,7 @@ class User < ApplicationRecord
          has_many :courses, dependent: :destroy
          has_many :addresses
          accepts_nested_attributes_for :addresses
+         has_many :enrollments, dependent: :destroy
          #has_many :instructor_id, through :course_id
          
          

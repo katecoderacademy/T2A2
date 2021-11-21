@@ -38,9 +38,10 @@
     <div><%= form.label :course_category %>
     <%= form.text_area :course_category, min: 0, max: 10 %></div>
         <div><%= form.label :picture %>
-    <%= form.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %></div>
+
     <div><%= form.label :substantive_law %>
     <%= form.number_field :substantive_law, min: 0, max: 10 %></div>
+            <%= form.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %></div>
         <div><%= form.label :url %>
     <%= form.text_field :url %></div>
 
