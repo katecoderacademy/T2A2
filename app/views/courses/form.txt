@@ -50,3 +50,8 @@
     form.time_field :my_time_field,
       value: @model_instance.my_time_field.strftime("%H:%M")
   %>
+
+
+  <%= button_to "Add #{course.name} to Account", enrollment_path(:course_id => course.id)  %>
+ <%= link_to "Add to Account", enrollment_add_path(:id => enrollment), method: :post %>
+ <%= link_to "Remove from Account", enrollment_path(enrollment_item), method: :delete %>

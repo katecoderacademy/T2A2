@@ -15,10 +15,10 @@ Rails.application.routes.draw do
   # get 'carts/:id' => "carts#show", as: "cart"
   # delete 'carts/:id' => "carts#destroy"
 
-  post 'enrollments/:id/add' => "enrollments#add_quantity", as: "enrollments_add"
-  post 'enrollments' => "enrollments#create"
-  get 'enrollments/:id' => "enrollments#show", as: "enrollments_item"
-  delete 'enrollments_items/:id' => "enrollments#destroy" 
+  # post 'enrollments/:id/add' => "enrollments#add_quantity", as: "enrollments_add"
+  # post 'enrollments' => "enrollments#create"
+  # get 'enrollments/:id' => "enrollments#show", as: "enrollments_item"
+  # delete 'enrollments_items/:id' => "enrollments#destroy" 
 
 
   # get "/courses/new", to: "courses#new"
@@ -30,10 +30,10 @@ Rails.application.routes.draw do
 # button_to "Add to Account", enrollment_path(:course_id => course.id)
 
 # Link from the Cart show (erb tags)
-post 'enrollments' => "enrollments#create"
+# post 'enrollments' => "enrollments#create"
 
-get 'enrollments/:id' => "enrollments#show", as: "enrollment"
-delete 'enrollments/:id' => "enrollments#destroy"
+# get 'enrollments/:id' => "enrollments#show", as: "enrollment"
+# delete 'enrollments/:id' => "enrollments#destroy"
 
 # post 'line_items/:id/add' => "line_items#add_quantity", as: "line_item_add"
 # post 'line_items/:id/reduce' => "line_items#reduce_quantity", as: "line_item_reduce"

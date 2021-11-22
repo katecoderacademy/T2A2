@@ -8,7 +8,9 @@ class User < ApplicationRecord
          has_many :addresses
          accepts_nested_attributes_for :addresses
          #has_many :instructor_id, through :course_id
-         
+         has_many :enrollments
+         has_many :courses, through: :enrollments
+         validates :email, uniqueness: true
          
         #  validates :first_name, presence: true, length: { in: 2..40 }
         #  validates :last_name, presence: true, length: { in: 2..40 }
