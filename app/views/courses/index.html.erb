@@ -1,4 +1,4 @@
-<h1>Find CPD</h1>
+<div class="coursesgrid"><h1>Find CPD</h1>
 
 <% @courses.each do |course| %>
   <h3><%= course.title %></h3>
@@ -18,4 +18,4 @@
     <%= link_to 'Edit', edit_course_path(course) %>
     <%= link_to 'Delete', course_path(course), method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
-<% end %>
+<% end %></div>

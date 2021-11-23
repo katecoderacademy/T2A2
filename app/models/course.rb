@@ -3,6 +3,8 @@ class Course < ApplicationRecord
     has_one :category_name
     has_one :address, through: :user
     has_one_attached :picture
+    has_many :enrollments
+    has_many :users, through: :enrollments
     
     #need to validate here to only proceed IF the instructor? = true
     # validates :title, presence: true, length:  { in: 4..40 }    

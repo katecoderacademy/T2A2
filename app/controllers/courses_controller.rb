@@ -3,7 +3,8 @@ before_action :authenticate_user!, except: %i[index show]
 before_action :find_course, only: %i[show edit update destroy]
 
 def index
-  @courses = Course.all
+  @courses = Course.includes(:user).all  #find this to optimise load times
+
 end
 
 def new
@@ -18,7 +19,7 @@ def create
     redirect_to @course
   else
     puts @course.errors.full_messages
-    puts "something goes wrong"
+    puts "something is wrong"
        
   end
 end
@@ -28,6 +29,11 @@ def show
 end
 
 
+def posted
+
+  @courses = Course.where(user_id: current_user.id)
+
+end
 
 
 

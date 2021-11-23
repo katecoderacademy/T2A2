@@ -26,11 +26,7 @@
 }
 
 
-body {
-    line-height: 4em;
 
-
-}
 
 .nav {
     overflow: hidden;
@@ -54,3 +50,58 @@ body {
     padding: 1em;
     background-color: #fff;
     }
+
+
+        /* Gridding */
+        /* .projectsgrid img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--bbr);
+              } */
+        
+          .coursesgrid {
+            display: grid;
+            /* grid-template-rows: [row1-start] 30vw [row1-end]; */
+            border: #fff 2px;
+            grid-template-columns: 1fr 1fr 1fr;
+            /* row-gap: 10vh; */
+            margin: auto;
+            width: 90%;
+            justify-self: center;
+            color: #fff;
+            align-items: start;
+            margin-top: 0;
+            padding-top:0;
+            z-index: -1;
+        }
+              
+        .coursesgrid div {
+            display: grid;
+            justify-self: center;
+            border: #fff 2px;
+            color: #fff;
+            align-items: start;
+            background: rgba(42, 42, 42, 0.6);
+            margin: 2rem 2.5rem 0.5rem;
+            border: 2em solid transparent;
+            z-index: -1;
+      
+            }
+        
+            /* .projecttext { 
+              display: grid;
+              justify-self: center;
+              color: #fff;
+              align-items: start;
+              background: rgba(42, 42, 42, 0.6);
+              margin: 2rem 2.5rem 0.5rem;
+              border: 2em solid transparent;
+              z-index: 0;
+              border-radius: var(--bbr);
+              line-height: 1.3em;
+              animation: fadeIn linear 3s;
+              -webkit-animation: fadeIn linear 3s;
+              -moz-animation: fadeIn linear 3s;
+              -o-animation: fadeIn linear 3s;
+              -ms-animation: fadeIn linear 3s;
+                   } */

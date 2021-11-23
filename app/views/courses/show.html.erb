@@ -1,4 +1,4 @@
-<h1><%= @course.title %></h1>
+<div class="coursesgrid"><%= @course.title %>
 
   <p><%= @course.description %></p>
   <p><%= @course.fee %></p>
@@ -16,8 +16,6 @@
     <p>Ethics: <%= @course.ethics %> points</p>
     <p>Professional Skills: <%= @course.professional_skills %> points</p></p>
 
+ <%= button_to 'Add to my Courses', enrollments_path(@course),  method: :post, params: {course_id:@course.id} %>
     
-<a href="<%= @course.url %>" target="_blank">Link to Course</a>
-<%= button_to "Add #{course.name} to Account", enrollment_path(:course_id => course.id)  %>
- <%= link_to "Add to Account", enrollment_add_path(:id => enrollment), method: :post %>
- <%= link_to "Remove from Account", enrollment_path(enrollment_item), method: :delete %>
+<a href="<%= @course.url %>" target="_blank">Link to Course</a></div>

@@ -9,11 +9,12 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   devise_for :users
-  resources :courses
+  resources :courses, :enrollments
   root to: "courses#index"
+  #post 'enrollments/:id/add' => "enrollments#add_quantity", as: "enrollments_add"
+  get 'postedcourses' => "courses#posted"
 
-  # get 'carts/:id' => "carts#show", as: "cart"
-  # delete 'carts/:id' => "carts#destroy"
+
 
   # post 'enrollments/:id/add' => "enrollments#add_quantity", as: "enrollments_add"
   # post 'enrollments' => "enrollments#create"
@@ -35,8 +36,6 @@ Rails.application.routes.draw do
 # get 'enrollments/:id' => "enrollments#show", as: "enrollment"
 # delete 'enrollments/:id' => "enrollments#destroy"
 
-# post 'line_items/:id/add' => "line_items#add_quantity", as: "line_item_add"
-# post 'line_items/:id/reduce' => "line_items#reduce_quantity", as: "line_item_reduce"
 
 
 end
