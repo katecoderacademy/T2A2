@@ -55,3 +55,28 @@
   <%= button_to "Add #{course.name} to Account", enrollment_path(:course_id => course.id)  %>
  <%= link_to "Add to Account", enrollment_add_path(:id => enrollment), method: :post %>
  <%= link_to "Remove from Account", enrollment_path(enrollment_item), method: :delete %>
+
+
+
+
+ <div class="col-6">
+<% @courses.each do |course| %>
+  <h3><%= course.title %></h3>
+  <p><%= course.description %></p>
+  <p>$<%= course.fee %></p>
+    <p><%= course.start_time %></p>
+        <p><%= course.end_time %></p>
+    <p><%= course.instructor_name %></p>
+        <p><%= course.instructor_role %></p>
+    <p>Practice Management Skills <%= course.practice_management %> points</p>
+    <p>Substantive Law: <%= course.substantive_law %> points</p>
+    <p>Ethics: <%= course.ethics %> points</p>
+    <p>Professional Skills: <%= course.professional_skills %> points</p>
+
+  <%= link_to 'View', course_path(course) %>
+  <% if user_signed_in? && current_user.id == course.user.id %>
+    <%= link_to 'Edit', edit_course_path(course) %>
+    <%= link_to 'Delete', course_path(course), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %></div>
+</div>

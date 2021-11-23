@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :courses, :enrollments
+  resources :users, only: [:show, :edit, :update]
   root to: "courses#index"
 
   get 'postedcourses' => "courses#posted"

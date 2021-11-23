@@ -8,12 +8,8 @@
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
+*/
+ @import "bootstrap";
 
  * {
     margin: 0;
@@ -25,7 +21,11 @@
     --body-color: #FFFFFF;
 } */
 
-
+h1 {
+    text-align: center;
+    padding-bottom: 2ex;
+    padding-top: 2ex;
+}
 
 
 .nav {
@@ -38,7 +38,7 @@
     align-items: center;
     padding:1em;
     width: 100vw;
-    /* background-color: #fff; */
+    background-color: #fff;
     /* font-family: var(--body-font); */
     z-index: 10;
 
@@ -52,18 +52,12 @@
     }
 
 
-        /* Gridding */
-        /* .projectsgrid img {
-            width: 100%;
-            height: auto;
-            border-radius: var(--bbr);
-              } */
         
           .coursesgrid div {
             display: grid;
             /* grid-template-rows: [row1-start] 30vw [row1-end]; */
             border: #0000 2px;
-            grid-template-columns: 1fr 1fr 1fr;
+            /* grid-template-columns: 1fr 1fr 1fr; */
             /* row-gap: 10vh; */
             margin: auto;
             width: 90%;
@@ -75,39 +69,3 @@
             z-index: -1;
         }
               
-        /* .coursesgrid div {
-            display: grid;
-            justify-self: center;
-            border: #fff 2px;
-            color: #fff;
-            align-items: start;
-            background: rgba(42, 42, 42, 0.6);
-            margin: 2rem 2.5rem 0.5rem;
-            border: 2em solid transparent;
-            z-index: -1;
-      
-            } */
-        .coursesbox {
-            display: flex;
-            /* color: #fff;
-            border: #fff 2px; */
-
-        }
-        
-            /* .projecttext { 
-              display: grid;
-              justify-self: center;
-              color: #fff;
-              align-items: start;
-              background: rgba(42, 42, 42, 0.6);
-              margin: 2rem 2.5rem 0.5rem;
-              border: 2em solid transparent;
-              z-index: 0;
-              border-radius: var(--bbr);
-              line-height: 1.3em;
-              animation: fadeIn linear 3s;
-              -webkit-animation: fadeIn linear 3s;
-              -moz-animation: fadeIn linear 3s;
-              -o-animation: fadeIn linear 3s;
-              -ms-animation: fadeIn linear 3s;
-                   } */
