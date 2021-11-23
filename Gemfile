@@ -63,4 +63,3 @@ gem 'cloudinary'
 
 gem "aws-sdk-s3", "~> 1.106"
 
-gem 'bootstrap', '~> 5.1.3'
