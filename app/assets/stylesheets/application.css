@@ -20,10 +20,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-:root {
+/* :root {
     --body-bg: #000000;
     --body-color: #FFFFFF;
-}
+} */
 
 
 
@@ -38,17 +38,17 @@
     align-items: center;
     padding:1em;
     width: 100vw;
-    background-color: #fff;
-    font-family: var(--body-font);
+    /* background-color: #fff; */
+    /* font-family: var(--body-font); */
     z-index: 10;
 
     }
 
 .nav p {
-    font-family: var(--body-font);
+    /* font-family: var(--body-font); */
     display: flex;
     padding: 1em;
-    background-color: #fff;
+    /* background-color: #fff; */
     }
 
 
@@ -62,13 +62,13 @@
           .coursesgrid div {
             display: grid;
             /* grid-template-rows: [row1-start] 30vw [row1-end]; */
-            border: #fff 2px;
+            border: #0000 2px;
             grid-template-columns: 1fr 1fr 1fr;
             /* row-gap: 10vh; */
             margin: auto;
             width: 90%;
             justify-self: center;
-            color: #fff;
+            /* color: #fff; */
             align-items: start;
             margin-top: 0;
             padding-top:0;
@@ -89,8 +89,8 @@
             } */
         .coursesbox {
             display: flex;
-            color: #fff;
-            border: #fff 2px;
+            /* color: #fff;
+            border: #fff 2px; */
 
         }
         

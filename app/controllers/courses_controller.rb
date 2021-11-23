@@ -12,8 +12,16 @@ def new
 end
 
 def create
-  @course = current_user.courses.new(course_params)
+  
+  
+  
 
+  
+  
+  
+  
+  @course = current_user.courses.new(course_params)
+  @course.user_id = current_user.id
 
   if @course.save 
     redirect_to @course
