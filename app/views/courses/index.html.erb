@@ -1,6 +1,8 @@
-<div class="coursesgrid"><h1>Find CPD</h1>
+<h1>Find CPD</h1>
+<div class="coursesgrid">
+<div class="coursesbox">
 
-<% @courses.each do |course| %>
+<% courses.each do |course| %>
   <h3><%= course.title %></h3>
   <p><%= course.description %></p>
   <p><%= course.fee %></p>
@@ -18,4 +20,6 @@
     <%= link_to 'Edit', edit_course_path(course) %>
     <%= link_to 'Delete', course_path(course), method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
-<% end %></div>
+<% end %></div></div>
+
+

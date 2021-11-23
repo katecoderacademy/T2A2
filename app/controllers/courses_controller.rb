@@ -36,6 +36,12 @@ def posted
 end
 
 
+def search
+
+  @courses = Course.includes(:user).all
+
+end
+
 
 
 def edit

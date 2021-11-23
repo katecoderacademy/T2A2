@@ -1,14 +1,17 @@
 <nav class="nav">
 
 
+<%= link_to 'Home', root_path %>
+<%= link_to 'Search', search_path %>
 <% if user_signed_in?  %>
     <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
     <%= link_to 'Add a course', new_course_path %>
     <%= link_to 'Tracked Courses', enrollments_path %>
-    <%= link_to 'Posted Courses', enrollments_path %>
+    <%= link_to 'Posted Courses', postedcourses_path %>
 <% else %>
 <%= link_to 'Log in', new_user_session_path %>
 <%= link_to 'Sign up', new_user_registration_path %>
 <% end %>
+<%= link_to 'Contact', search_path %>
 
 </nav>

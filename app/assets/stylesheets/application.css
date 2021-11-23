@@ -59,7 +59,7 @@
             border-radius: var(--bbr);
               } */
         
-          .coursesgrid {
+          .coursesgrid div {
             display: grid;
             /* grid-template-rows: [row1-start] 30vw [row1-end]; */
             border: #fff 2px;
@@ -75,7 +75,7 @@
             z-index: -1;
         }
               
-        .coursesgrid div {
+        /* .coursesgrid div {
             display: grid;
             justify-self: center;
             border: #fff 2px;
@@ -86,7 +86,13 @@
             border: 2em solid transparent;
             z-index: -1;
       
-            }
+            } */
+        .coursesbox {
+            display: flex;
+            color: #fff;
+            border: #fff 2px;
+
+        }
         
             /* .projecttext { 
               display: grid;

@@ -7,11 +7,10 @@ end
 
 def create
   @course = Course.find(params[:course_id])
-  # user_id = current_user.id
   @enrollment = @course.enrollments.new
   @enrollment.user_id = current_user.id
   @enrollment.save
-  # @enrollment = Enrollment.create(params.require(:enrollment).permit(:course_id, :user_id))
+
     redirect_to root_path
 end
 
@@ -25,9 +24,6 @@ end
 
 def index
   @enrollments = current_user.enrollments
-  
-  #@enrollment = Enrollment.find(params[:id])
-  #@course = Course.find(:course_id)
 end
 
 
