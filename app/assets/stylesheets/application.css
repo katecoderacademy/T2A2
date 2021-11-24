@@ -26,6 +26,8 @@ body {
 
 }
 
+
+
 .bg {
     height: 100%;
     /* background-image: linear-gradient(rgb(40, 28, 95, 0.8), rgb(255, 255, 255, 0.6)); */
@@ -42,11 +44,17 @@ h1 {
     text-align: center;
     padding-bottom: 2ex;
     padding-top: 2ex;
-    font-family: 'Public Sans', sans-serif;
-    font-weight: 800;
+
+    
+    color: linear-gradient(rgb(40, 28, 95), rgb(40, 28, 150));
+    font-weight:800;
 }
 
+a:link {
+    text-decoration: none;
 
+
+}
 
 .nav {
     overflow: hidden;
@@ -61,7 +69,8 @@ h1 {
     background-color: #fff;
     /* font-family: var(--body-font); */
     z-index: 10;
-
+    box-shadow: 0px 0 10px rgba(0, 0, 0, 0.8);
+    /* z-index: 100; */
     }
 
 .nav p {
@@ -89,3 +98,25 @@ h1 {
             z-index: -1;
         }
               
+        .col-lg-6 {
+            width: 48%; !important
+        }
+
+        .mainboxes { 
+            display: grid;
+            justify-self: center;
+            color: #fff;
+            align-items: start;
+            background: rgba(42, 42, 42, 0.6);
+            margin: 3rem auto 2.5rem;
+            border: 2em solid transparent;
+            z-index: -1;
+            line-height: 1.3em;
+            animation: fadeIn linear 3s;
+            -webkit-animation: fadeIn linear 3s;
+            -moz-animation: fadeIn linear 3s;
+            -o-animation: fadeIn linear 3s;
+            -ms-animation: fadeIn linear 3s;
+            box-shadow: 0px 0 10px 0 rgba(0, 0, 0, 0.8);
+            }
+        

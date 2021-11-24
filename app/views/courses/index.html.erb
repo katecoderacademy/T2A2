@@ -1,22 +1,18 @@
-<h1>Find CPD</h1>
+<div class="container">
 
 
 
 <div class="row">
 
-
-
-
-
 <% @courses.each_slice(2) do |courses| %>
-  <div class="col-lg-6">
+  <div class="col-lg-5 mainboxes">
     <% courses.each do |course| %>
       <h3><%= course.title %></h3>
          <p>$<%= course.fee %></p>
            <%= link_to 'View', course_path(course) %>
 
-     <% end %></div>
+     <% end %></div><br>
      <% end %>
      
 </div>
-
+</div>
