@@ -1,6 +1,6 @@
 class Course < ApplicationRecord
     belongs_to :user
-    has_one :category_name
+    has_one :category
     has_one :address, through: :user
     has_one_attached :picture
     has_many :enrollments
