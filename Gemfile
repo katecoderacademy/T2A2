@@ -60,6 +60,3 @@ gem 'devise'
 
 # AWS manages the image hosting
 gem "aws-sdk-s3", "~> 1.106"
-
-# Bootstrap to manage the gridding of the pages
-gem 'bootstrap', '~> 5.1.3'
