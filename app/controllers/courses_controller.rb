@@ -12,23 +12,15 @@ def new
 end
 
 def create
-  
-  
-  
 
-  
-  
-  
-  
   @course = current_user.courses.new(course_params)
   @course.user_id = current_user.id
 
-  if @course.save 
+  if @course.save
     redirect_to @course
   else
-    puts @course.errors.full_messages
-    puts "something is wrong"
-       
+    flash.now[:messages] = @course.errors.full_messages[0]
+    render :new
   end
 end
 
@@ -61,16 +53,19 @@ def update
 
   redirect_to @course
   else
-    render :edit
+      flash.now[:messages] = @course.errors.full_messages[0]
+      render :edit
+    end
 
-  end
+
 end
+
 
 
 def destroy
   @course.destroy
 
-  redirect_to root_path
+  redirect_to posted
 
 
 end

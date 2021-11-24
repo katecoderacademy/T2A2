@@ -12,6 +12,12 @@
 
   <body>
       <h1>Find CPD</h1> 
+       <div class="container">
+       <% if flash.present? %> <% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %><% end %>
        <% if notice.present? %><p class="notice"><%= notice %></p><% end  %>
        <% if alert.present? %><p class="alert"><%= alert %></p><% end  %>
     <%= yield %>
@@ -19,6 +25,7 @@
     <br>
     <br>
     <br>
+    </div>
     <%= render 'shared/navbar' %>
   </body>
 </html>

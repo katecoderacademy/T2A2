@@ -7,13 +7,19 @@ class Course < ApplicationRecord
     has_many :users, through: :enrollments
     
     #need to validate here to only proceed IF the instructor? = true
-    # validates :title, presence: true, length:  { in: 4..40 }    
+    validates_length_of :title, within: 2..40, message:'Title cannot be blank and cannot be more than 45 characters.'    
     
-    # validates :description, presence: true, length: { in: 30..4000 }
+    validates_length_of :description, within: 30..4000, message:'Description cannot be blank and must be between 30 and 4000 characters.'
     
-    # validates :fee, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    validates_numericality_of :fee, greater_than: 0, allow_blank:true
 
-    # validates :ethics, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    validates_numericality_of :ethics, greater_than_or_equal_to: 0, allow_blank:true
+
+    validates_numericality_of :professional_skills, greater_than_or_equal_to: 0, allow_blank:true
+
+    validates_numericality_of :substantive_law, greater_than_or_equal_to: 0, allow_blank:true
+
+    validates_numericality_of :ethics, greater_than_or_equal_to: 0, allow_blank:true
 
     # validates :professional_skills, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 

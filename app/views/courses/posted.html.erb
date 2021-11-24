@@ -1,9 +1,9 @@
 <h3> My Course Listings </h3>
-<div class="container">
+
 <% @courses.each do |course| %>
   <h3><%= course.title %></h3>
   <p><%= course.description %></p>
       <p><%= link_to 'Edit', edit_course_path(course) %></p>
   <% end %>
-  </div>
+  
   

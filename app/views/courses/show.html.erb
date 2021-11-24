@@ -1,4 +1,4 @@
-<div class="container"><h3><%= @course.title %></h3>
+<h3><%= @course.title %></h3>
 
   <p><%= @course.description %></p>
   
@@ -31,10 +31,10 @@
 
 
           <% if user_signed_in? && current_user.id == @course.user.id %>
-            <%= link_to 'Edit', edit_course_path(course) %>
-            <%= link_to 'Delete', course_path(course), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Edit', edit_course_path(@course) %>
+            <%= link_to 'Delete', course_path(@course), method: :delete, data: { confirm: 'Are you sure?' } %>
             <% end %>
             <% if user_signed_in? %>
             <%= button_to 'Add to my Courses', enrollments_path(@course),  method: :post, params: {course_id:@course.id} %>
             <% end %>
-<% if @course.url.present? %><a href="<%= @course.url %>" target="_blank">Link to Course</a></div> <% end %></div>
+<% if @course.url.present? %><a href="<%= @course.url %>" target="_blank">Link to Course</a></div> <% end %>

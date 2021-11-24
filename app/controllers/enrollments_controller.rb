@@ -6,12 +6,21 @@ def new
 end
 
 def create
+  
   @course = Course.find(params[:course_id])
   @enrollment = @course.enrollments.new
   @enrollment.user_id = current_user.id
-  @enrollment.save
+  
+  if @enrollment.save
+    redirect_to enrollments_path
+  else
+    flash.now[:messages] = @enrollments.errors.full_messages[0]
+    render :back
+  end
 
-    redirect_to root_path
+
+
+
 end
 
 def destroy
