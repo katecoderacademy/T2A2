@@ -19,8 +19,10 @@ class User < ApplicationRecord
         validates_length_of :phone_number, within: 6..20, allow_blank:true, message: 'Please enter a valid phone number.'
         validates_numericality_of :phone_number, allow_blank:true, message: 'Please enter a valid phone number without spaces,  brackets or any other symbols.'
         validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
+        
+        
         validates_presence_of :phone_number, if: Proc.new{ |instructor| :instructor.blank? }
-  
+        #
 
         # validates phone_number_if_instructor, on :create && :
 

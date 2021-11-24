@@ -65,7 +65,7 @@ end
 def destroy
   @course.destroy
 
-  redirect_to posted
+  redirect_to posted_courses
 
 
 end
