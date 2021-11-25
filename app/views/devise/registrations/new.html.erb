@@ -28,12 +28,24 @@
     <%= f.text_field :last_name %><br />
 <%= f.label :phone_number %>
     <%= f.text_field :phone_number %><br />
-<%= f.label :instructor %>
-    <%= f.check_box :instructor %><br />
+
+    <div><%= form.label :address_line_1 %>
+    <%= form.text_field :address_line_1 %></div>
+    <div><%= form.label :address_line_2 %>
+    <%= form.text_field :address_line_2 %></div>
+        <div><%= form.label :suburb %>
+    <%= form.text_field :suburb %></div>
+            <div><%= form.label :state %>
+    <%= form.text_field :state %></div>
+                <div><%= form.label :state %>
+                <%= form.text_field :state %></div>
+    <div><%= form.label :postcode %>
+    <%= form.number_field :postcode, min: 800, max: 9999 %></div>
 </div>
 
-
-
+<%# Defines if the user can post courses. Phone number is required to select this.%>
+<%= f.label :instructor %>
+    <%= f.check_box :instructor %><br />
 
   <div class="actions">
     <%= f.submit "Sign up" %>

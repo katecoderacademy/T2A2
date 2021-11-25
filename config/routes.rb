@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   # get 'courses/index'
   # get 'courses/show'
   
+  # map.devise_for :users
+  # map.resources :users, :has_one: address
+
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
     get 'logout', to: 'devise/sessions#destroy'

@@ -12,6 +12,7 @@ def new
   @course = Course.new
   @categories = Category.all
   @address = Address.new
+  @address.build_courses
 end
 
 def create
@@ -88,7 +89,7 @@ def find_course
   @course = Course.find(params[:id])
 end
 def course_params
-   params.require(:course).permit(:title, :start_time, :end_time, :url, :instructor_role, :duration, :description, :fee, :online, :instructor_name, :practice_management, :substantive_law, :ethics, :professional_skills, :category_id, :picture, :user_id)
+   params.require(:course).permit(:title, :start_time, :end_time, :url, :instructor_role, :duration, :description, :fee, :online, :instructor_name, :practice_management, :substantive_law, :ethics, :professional_skills, :category_id, :picture, :user_id, address_attributes: [:address_line_1, :address_line_2, :suburb, :state, :postcode])
 end
 
 end

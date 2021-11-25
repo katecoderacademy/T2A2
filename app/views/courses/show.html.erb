@@ -49,9 +49,6 @@
           <% if @course.ethics.present? %><p>Ethics: <%= @course.ethics %> points</p><% end %>
     
           <% if @course.professional_skills.present? %><p>Professional Skills: <%= @course.professional_skills %> points</p></p><% end %>
-                      <p><%= @course.instructor_name %></p>
-            <p><%= @course.instructor_role %></p>
-
           <% if user_signed_in? && current_user.id == @course.user.id %>
             <%= link_to 'Edit', edit_course_path(@course) %>
             <%= link_to 'Delete', course_path(@course), method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :courses, dependent: :destroy
-  has_many :addresses, class_name: "Address", foreign_key: "address_id"
-  accepts_nested_attributes_for :addresses
+  has_one :address, class_name: "Address", foreign_key: "address_id"
+  accepts_nested_attributes_for :address
          #has_many :instructor_id, through :course_id
   has_many :enrollments
   has_many :courses, through: :enrollments
@@ -30,6 +30,10 @@ class User < ApplicationRecord
         
         # end
         
-
+        # enables a nested form without revealing the Devise controller
+        def with_address
+          self.addresses.build
+          self
+        end
 
 end
