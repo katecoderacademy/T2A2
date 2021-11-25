@@ -14,8 +14,10 @@ import 'bootstrap/dist/js/bootstrap'
 import "bootstrap/dist/css/bootstrap";
 import 'bootstrap';
 import '../stylesheets/application';
+require("jquery-mask-plugin")
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+$.jMaskGlobals.watchDataMask = true;
