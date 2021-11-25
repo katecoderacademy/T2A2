@@ -23,22 +23,13 @@ class User < ApplicationRecord
         validates_length_of :phone_number, within: 6..20, allow_blank:true, message: 'Please enter a valid phone number.'
         validates_numericality_of :phone_number, allow_blank:true, message: 'Please enter a valid phone number without spaces,  brackets or any other symbols.'
         validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
+        validates :phone_number, presence: true, if: :instructor?
         
+        # with_options if: :instructor.present? do |instructor|
+        #   instructor.validates :phone_number, length:{in 2..40}, allow_blank:false
         
-        with_options if: :is_instructor? do |instructor|
-          instructor.validates :phone_number, presence: true
-
-        end
-        #
-
-        # validates phone_number_if_instructor, on :create && :
-
-        # def phone_number_if_instructor
-        #   if :phone_number.blank? && :instructor.present?
-        #     return errors.add(
-        #       :phone_number, 'You must provide a phone number to post courses.')
-        #   end
-
         # end
+        
+
 
 end

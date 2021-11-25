@@ -15,11 +15,7 @@
               <% end  %></p>
                 <p>
           
-          <% if @category.category.present? %>
-              Category: <%= @course.category.category %>
-              <% else %>
-              No Category
-              <% end  %></p>
+          
            <%= link_to 'View', course_path(course) %>
 
      <% end %></div>
