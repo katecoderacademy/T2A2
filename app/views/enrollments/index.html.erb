@@ -16,6 +16,8 @@
           <% if enrollment.course.ethics.present? %><p>Ethics: <%= enrollment.course.ethics %> points</p><% end %>
     
           <% if enrollment.course.professional_skills.present? %><p>Professional Skills: <%= enrollment.course.professional_skills %> points</p></p><% end %>
+          <p><%= link_to 'View', course_path(enrollment.course_id) %></p>
+          
 </li>
 
 

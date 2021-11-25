@@ -3,7 +3,9 @@
 <% @courses.each do |course| %>
   <h3><%= course.title %></h3>
   <p><%= course.description %></p>
+      <p><%= link_to 'View', course_path(course) %></p>
       <p><%= link_to 'Edit', edit_course_path(course) %></p>
+      <p><%= link_to 'Delete', course_path(course), method: :delete, data: { confirm: 'Are you sure?' } %></p>
   <% end %>
   
   

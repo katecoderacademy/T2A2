@@ -60,3 +60,6 @@ gem 'devise'
 
 # AWS manages the image hosting
 gem "aws-sdk-s3", "~> 1.106"
+
+# manages URL validation from course insertion page
+gem "validate_url"

@@ -1,24 +1,45 @@
 <h3><%= @course.title %></h3>
-
+<%# <p><%= @course.category.category</p> %>
   <p><%= @course.description %></p>
   
-        <% if @course.fee.present? %>
-            <p>$<%= @course.fee %>
-            <% else %>
-            Free Course
-            <% end  %></p>
+  
+  
+  
+  
+  
+  <p>
+          
+          <% if @category.category.present? %>
+              Category: <%= @category.category %>
+              <% else %>
+              No Category
+              <% end  %></p>
+          
+          
+          
+          
+          
+          <p><% if @course.fee.present? %>
+              $<%= @course.fee %>
+              <% else %>
+              Free Course
+              <% end  %></p>
     
-            <% if @course.online.present? %>
-            Online Course
-            <% else %>
-            <p><%= @course.start_time %></p>
-            <p><%= @course.end_time %></p>
-            <% end  %>
+                <% if @course.online.present? %>
+                Online Course
+                <% else %>
+                <p><%= @course.start_time %></p>
+                <p><%= @course.end_time %></p>
+                <% end  %>
           
             <p><%= @course.instructor_name %></p>
             <p><%= @course.instructor_role %></p>
             <p><%= image_tag @course.picture if @course.picture.attached? %></p>
-
+                <%# <p><%= @course.addresses.address_line_1 %></p>
+                <%# <p><%= @course.addresses.address_line_2 %></p>
+                <%# <p><%= @course.addresses.suburb %></p>
+                <%# <p><%= @course.addresses.state %></p>
+                <%# <p><%= @course.addresses.postcode %></p> 
   
     <p>
           <% if @course.practice_management.present? %><p>Practice Management Skills <%= @course.practice_management %> points</p><% end %>
@@ -28,7 +49,8 @@
           <% if @course.ethics.present? %><p>Ethics: <%= @course.ethics %> points</p><% end %>
     
           <% if @course.professional_skills.present? %><p>Professional Skills: <%= @course.professional_skills %> points</p></p><% end %>
-
+                      <p><%= @course.instructor_name %></p>
+            <p><%= @course.instructor_role %></p>
 
           <% if user_signed_in? && current_user.id == @course.user.id %>
             <%= link_to 'Edit', edit_course_path(@course) %>

@@ -5,27 +5,36 @@ before_action :find_course, only: %i[show edit update destroy]
 def index
   @courses = Course.includes(:user).all  #find this to optimise load times
 
+  # @category = Category.find(@courses.category_id)
 end
 
 def new
   @course = Course.new
+  @categories = Category.all
+  @address = Address.new
 end
 
 def create
+  if current_user.instructor
 
   @course = current_user.courses.new(course_params)
   @course.user_id = current_user.id
-
+  
   if @course.save
     redirect_to @course
   else
     flash.now[:messages] = @course.errors.full_messages[0]
     render :new
   end
+else
+  flash.now[:messages] = "You must be an instructor to post courses."
+  redirect_to root_path
+  end
 end
 
 def show
   @course = Course.find(params[:id])
+  @category = Category.find(@course.category_id)
 end
 
 
@@ -37,8 +46,8 @@ end
 
 
 def search
-
-  @courses = Course.includes(:user).all
+  @category = Category.find(@course.category_id)
+  @courses = Course.includes(Category.find(@course.category_id))
 
 end
 
@@ -79,7 +88,7 @@ def find_course
   @course = Course.find(params[:id])
 end
 def course_params
-   params.require(:course).permit(:title, :start_time, :end_time, :url, :instructor_role, :duration, :description, :fee, :online, :instructor_name, :practice_management, :substantive_law, :ethics, :professional_skills, :course_category, :picture, :user_id)
+   params.require(:course).permit(:title, :start_time, :end_time, :url, :instructor_role, :duration, :description, :fee, :online, :instructor_name, :practice_management, :substantive_law, :ethics, :professional_skills, :category_id, :picture, :user_id)
 end
 
 end

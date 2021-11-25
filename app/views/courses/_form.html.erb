@@ -7,6 +7,11 @@
 
     <div><%= form.label :description %>
     <%= form.text_area :description %></div>
+    <%# insert online checkbox %>
+    <%# <%= form.label :ingredients %>
+        <%# <%= form.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %> 
+
+
 
     <div><%= form.label :start_time %>
     <%= form.datetime_field :start_time %> </div>
@@ -35,15 +40,33 @@
         <div><%= form.label :substantive_law %>
     <%= form.number_field :substantive_law, min: 0, max: 10 %></div>
 
-    <div><%= form.label :course_category %>
-    <%= form.text_area :course_category, min: 0, max: 10 %></div>
-        <div><%= form.label :picture %>
-    <%= form.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %></div>
+        <div>    <%= form.label :category %>
+    <%= form.collection_select :category_id, Category.all, :id, :category %></div>
+
+
+
+
     <div><%= form.label :substantive_law %>
     <%= form.number_field :substantive_law, min: 0, max: 10 %></div>
         <div><%= form.label :url %>
     <%= form.text_field :url %></div>
+    
+    
+    <div><%= form.label :address_line_1 %>
+    <%= form.text_field :address_line_1 %></div>
+    <div><%= form.label :address_line_2 %>
+    <%= form.text_field :address_line_2 %></div>
+        <div><%= form.label :suburb %>
+    <%= form.text_field :suburb %></div>
+            <div><%= form.label :state %>
+    <%= form.text_field :state %></div>
+                <div><%= form.label :state %>
+                <%= form.text_field :state %></div>
+    <div><%= form.label :postcode %>
+    <%= form.number_field :postcode, min: 800, max: 9999 %></div>
 
+        <div><%= form.label :picture %>
+    <%= form.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %></div>
     <%= form.submit %>
   </div>
 

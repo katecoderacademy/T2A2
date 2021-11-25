@@ -4,14 +4,25 @@
 
 <div class="row">
 
-<% @courses.each_slice(2) do |courses| %>
+<% @courses.each_slice(1) do |courses| %>
   <div class="col-lg-5 mainboxes">
     <% courses.each do |course| %>
       <h3><%= course.title %></h3>
-         <p>$<%= course.fee %></p>
+         <p><% if course.fee.present? %>
+              $<%= course.fee %>
+              <% else %>
+              Free Course
+              <% end  %></p>
+                <p>
+          
+          <% if @category.category.present? %>
+              Category: <%= @course.category.category %>
+              <% else %>
+              No Category
+              <% end  %></p>
            <%= link_to 'View', course_path(course) %>
 
-     <% end %></div><br>
+     <% end %></div>
      <% end %>
      
 </div>
