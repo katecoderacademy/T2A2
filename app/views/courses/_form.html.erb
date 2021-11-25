@@ -7,9 +7,9 @@
 
     <div><%= form.label :description %>
     <%= form.text_area :description %></div>
-    <%# insert online checkbox %>
-    <%# <%= form.label :ingredients %>
-        <%# <%= form.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %> 
+        <div><%= form.label :online %>
+    <%= form.check_box :online %></div>
+
 
 
 
@@ -37,8 +37,7 @@
         
         
         
-        <div><%= form.label :substantive_law %>
-    <%= form.number_field :substantive_law, min: 0, max: 10 %></div>
+        
 
         <div>    <%= form.label :category %>
     <%= form.collection_select :category_id, Category.all, :id, :category %></div>

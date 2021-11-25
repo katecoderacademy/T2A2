@@ -9,16 +9,8 @@
   
   <p>
           
-          <% if @category.category.present? %>
-              Category: <%= @category.category %>
-              <% else %>
-              No Category
-              <% end  %></p>
-          
-          
-          
-          
-          
+<p><%= @category.category %></p>
+                    
           <p><% if @course.fee.present? %>
               $<%= @course.fee %>
               <% else %>
@@ -35,12 +27,7 @@
             <p><%= @course.instructor_name %></p>
             <p><%= @course.instructor_role %></p>
             <p><%= image_tag @course.picture if @course.picture.attached? %></p>
-                <%# <p><%= @course.addresses.address_line_1 %></p>
-                <%# <p><%= @course.addresses.address_line_2 %></p>
-                <%# <p><%= @course.addresses.suburb %></p>
-                <%# <p><%= @course.addresses.state %></p>
-                <%# <p><%= @course.addresses.postcode %></p> 
-  
+ 
     <p>
           <% if @course.practice_management.present? %><p>Practice Management Skills <%= @course.practice_management %> points</p><% end %>
           

@@ -46,11 +46,6 @@ def posted
 end
 
 
-def search
-  @category = Category.find(@course.category_id)
-  @courses = Course.includes(Category.find(@course.category_id))
-
-end
 
 
 

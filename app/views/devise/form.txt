@@ -15,7 +15,7 @@
 <% end %>
 
 
-<%# <div><%= form.label :address_line_1 %>
+<div><%= form.label :address_line_1 %>
     <%= form.text_field :address_line_1 %></div>
     <div><%= form.label :address_line_2 %>
     <%= form.text_field :address_line_2 %></div>
@@ -26,4 +26,4 @@
                 <div><%= form.label :state %>
                 <%= form.text_field :state %></div>
     <div><%= form.label :postcode %>
-    <%# <%= form.number_field :postcode, min: 800, max: 9999 %></div> %> %>
+    <%= form.number_field :postcode, min: 800, max: 9999 %></div>
