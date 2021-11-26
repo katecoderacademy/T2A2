@@ -8,17 +8,19 @@ end
 def create
   
   @course = Course.find(params[:course_id])
-  @enrollment = @course.enrollments.new
-  @enrollment.user_id = current_user.id
+  @enrollments = Enrollment.all.includes(:user).where(course_id: params[:course_id])
   
-  if @enrollment.save
-    redirect_to enrollments_path
-  else
-    flash.now[:messages] = @enrollments.errors.full_messages[0]
-    render :back
+  unless @enrollments.map(&:user_id).include? current_user.id
+
+      @enrollment = @course.enrollments.new
+      @enrollment.user_id = current_user.id
+      @enrollment.save
+      redirect_to enrollments_path
+    else
+
+      redirect_to enrollments_path
+
   end
-
-
 
 
 end
@@ -45,5 +47,12 @@ end
 def enrollment_params
    params.require(:enrollment).permit(:user_id, :course_id)
 end
+
+# def check_if_enrolled
+#     user.joins(:course_id)
+
+# end
+
+
 
 end
