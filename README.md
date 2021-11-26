@@ -26,12 +26,7 @@ Run bin/rails db:setup
 
 * Deployment instructions
 
-R1	Create your app using Ruby on Rails.
-R2	Use Postgresql database in development and production.
-R3	Your app will have authentication (eg. Devise).
-R4	Your app will have authorisation (i.e. users have restrictions on what they can see and edit).
-R5	Your app will have some type of file (eg. images) uploading capability.
-R6	Your app is to be deployed to Heroku (recommended) or AWS.
+
 
 R7	Identification of the problem you are trying to solve by building this particular marketplace app.
 
@@ -53,12 +48,24 @@ R10	A link to your GitHub repository (repo).
 - https://github.com/katecoderacademy/T2A2/
 R11	Description of your marketplace app (website), including:
 - Purpose
-
+This app  allows the posting of courses by accounts set up for those purposes (taking data for verification purposes such as addresses and telephone numbers). 
+For users who just want to attend CPD, more casual users only need to provide limited information so they can track the courses they are interested in. The website is totally open to browsing without a login.
 
 - Functionality / features
+1. Secure sign-in facilities that stores passwords securely;
+1. post courses and details including their CPD points, as well as a photo of the primary instructor;
+2. manage courses through a list which links back to editing them;
+3. Review courses and add them to a list of courses to track courses of interest; 
+
 - Sitemap
+<<insert sitemap>>
+
 - Screenshots
+<<insert screenshots>>
+
 - Target audience
+This app is designed for lawyers and other legal professionals who need to do 10 CPD points a year.
+
 - Tech stack (e.g. html, css, deployment platform, etc)
 R12	User stories for your app
 
@@ -81,7 +88,7 @@ I should be able to assign categories to the course.
 If created by me, I should be able to edit and delete categories and whether the course has been cancelled. I should NOT be able to edit another users profile information, bucket information, or course information.
 
 
-ADministrator
+Administrator
 
 I should be able to view, edit, and delete all courses in FindCPD.
 I should be able to lock user accounts so that they are unable to use FindCPD, if so required. I should be able to view a dashboard of all relevant materials, where I can make notes if need be. 
@@ -101,21 +108,44 @@ R15	Explain the different high-level components (abstractions) in your app
 The app contains 3 controllers
 1. Users Controller (managed by Devise)
     
-    Manages user registration and roles. Permissions are managed by way of checkboxes. 
-    A basic user requires email, password, first name( ) and last name
-    To gain posting permissions users must be registered as 'instructors' which is done through selecting the 'instructor' checkbox. This can only be selected once the user provides a phone number (on top of other basic information).  
+    Manages user registration and roles and designed to provide authentication. Permissions are managed by way of checkboxes. 
+    A basic user requires email, password, first name( ) and last name.
+    To gain posting permissions users must be registered as 'instructors' which is done through selecting the 'instructor' checkbox. This can only be selected once the user provides a phone number (on top of other basic information) with this authentication occuring on the controller. 
     The app itself will not allow users to create admins but the database schema allows for the creation of admin users.
-    This controller interacts with the addresses model
+    This controller interacts with the addresses model to enable providing of addresses. Eventually the controller should not allow users to post unless they supply one address. 
+    There is validation in the model that forces a user to provide first and last names that only use alpha characters and spaces; a unique email with validation on format; a numeric phone number that is between 6 and 20 characters.
+    
     
 2. Courses Controller
-    Manages the posting and indexing of courses. 
+    Manages the posting and indexing of courses. Users can create a course and select a relevant category (from the category mnodel) to index against. This includes a show to show individual courses, the site's index page to show all the courses, an update page, a courses posted page which shows a user all the courses they posted, a new courses page.
+    There is validation on the model including title restricting to it between 2 and 100 characters using alphanumeric and punchation; instructor name between 2 and 40 characters alphanumeric and puncuation, instructor role between 2 and 100 characters alphanumeric and puncuation, description between 30 and 4000 characters alphanumeric and puncuation, instructor role between 2 and 100 characters alphanumeric and puncuation, fee which is a number greater than zero or blank (if blank the course is free), numeric fields ethics and professional skills and substantive law and practice_management which can be greater or equal to zero. Both fee and the CPD scores require input masking which is yet to be implimented.  There is also a URL field which is sanitised by way of the "validate_url" gem and can accept up to 150 characters.
 
 Users are prevented from accessing the 'posting' page as even if they do, the controller will redirect them to the homepage
 
 
 3. Enrollments Controller
+    Enrollments allows users to track courses of interest and takes the ID of the user and ID of the course and stores it in its own table. The output of those stored 'enrollments' is displayed on the 'Tracked Courses' page. 
+
+The app contains a further 2 models;
+
+1. category
+the category model applies a categories from a pre-defined list to the listing. Category has been created as a seperate model as it would not otherwise be able to apply from a pre-defined list. Further, the intention is that category will become a Categories Controller, to enable search and indexing of courses against those controllers.
+
+2. address
+the address model currently does not display due to its nested forms not rendering on either the new course page or users page/s. For the purposes of explaination, it needed to be a distinct editity from Users and Courses, as 
+a) at present, an address should be able to be applied to a course OR a user; and
+b) eventually, it will likely need a seperate 'states' table so that courses from particular states can be indexed and searched (done by way an Address or States controller); and
+c) ideally, the user would have a one-to-many relationship with addresses where they would need to create addresses in their profile to then be able to apply them to the course listing. 
 
 R16	Detail any third party services that your app will use
+1. The app currently uses AWS for image storage. The images are stored by way of an S3 private bucket. When a user creates a course, the image is uploded to the bucket. The details and other associated data is stored in the relevant image bucket databases (which have not been included in the ERD). When a course that has an image is shown, this image is then called and AWS S3 serves it back. As the app has no images except for those displayed on course pages of the individual instructors, the AWS calls are only made on the images from the specific courses that have instructor images on them.
+
+Eventually, the app intends to use
+2. Mailgun to enable email users of their new accounts, to confirm their email address and thus enable their account, and to email courses of interest to the user so they can keep a record of it in their email for future reference;
+3. An address verification service probably using https://addressr.io/ which will provide auto-fill of addresses and also assist in preventing the incorrect entry of address data;
+4. A map API to show maps of the addresses on the page, probably Google Maps to show a static map on course pages so that users can see where face-to-face courses are held.
+
+
 R17	Describe your projects models in terms of the relationships (active record associations) they have with each other
 
 

@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h3>Sign up</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -29,20 +29,21 @@
 <%= f.label :phone_number %>
     <%= f.text_field :phone_number %><br />
 
-    <div><%= form.label :address_line_1 %>
-    <%= form.text_field :address_line_1 %></div>
-    <div><%= form.label :address_line_2 %>
-    <%= form.text_field :address_line_2 %></div>
-        <div><%= form.label :suburb %>
-    <%= form.text_field :suburb %></div>
-            <div><%= form.label :state %>
-    <%= form.text_field :state %></div>
-                <div><%= form.label :state %>
-                <%= form.text_field :state %></div>
-    <div><%= form.label :postcode %>
-    <%= form.number_field :postcode, min: 800, max: 9999 %></div>
+<%= f.fields_for :address do |address_form| %>
+   <div><%= address_form.label :address_line_1 %>
+    <%= address_form.text_field :address_line_1 %></div>
+    <div><%= address_form.label :address_line_2 %>
+    <%= address_form.text_field :address_line_2 %></div>
+        <div><%= address_form.label :suburb %>
+    <%= address_form.text_field :suburb %></div>
+            <div><%= address_form.label :state %>
+    <%= address_form.text_field :state %></div>
+                <div><%= address_form.label :state %>
+                <%= address_form.text_field :state %></div>
+    <div><%= address_form.label :postcode %>
+    <%= address_form.number_field :postcode, min: 800, max: 9999 %></div>
+<% end %>
 </div>
-
 <%# Defines if the user can post courses. Phone number is required to select this.%>
 <%= f.label :instructor %>
     <%= f.check_box :instructor %><br />

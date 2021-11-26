@@ -5,7 +5,6 @@ before_action :find_course, only: %i[show edit update destroy]
 def index
   @courses = Course.includes(:user).all  #find this to optimise load times
 
-  # @category = Category.find(@courses.category_id)
 end
 
 def new
@@ -16,6 +15,7 @@ def new
 end
 
 def create
+  #checks if user is instructor. if so, allow them to create courses.
   if current_user.instructor
 
   @course = current_user.courses.new(course_params)

@@ -6,7 +6,7 @@ def new
 end
 
 def create
-  
+  #prevents double enrollment
   @course = Course.find(params[:course_id])
   @enrollments = Enrollment.all.includes(:user).where(course_id: params[:course_id])
   
@@ -34,7 +34,7 @@ end
 
 
 def index
-  @enrollments = current_user.enrollments
+  @enrollments = current_user.enrollments.includes(:course).all
 end
 
 
