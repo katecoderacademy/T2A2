@@ -1,16 +1,16 @@
+
 <h3><%= @course.title %></h3>
-<%# <p><%= @course.category.category</p> %>
-  <p><%= @course.description %></p>
-  
-  
-  
-  
-  
-  
-  <p>
-          
-<p><%= @category.category %></p>
-                    
+
+  <div class="container">
+   <div class="row">
+
+   <div class="col-sm-8">
+  <p><%= @course.description %></p></div>
+<div class="col-sm-4">
+      <p><%= image_tag @course.picture if @course.picture.attached? %></p>
+      <p><%= @course.instructor_name %></p>
+      <p><%= @course.instructor_role %></p>
+          <p>Category: <%= @category.category %></p>
           <p><% if @course.fee.present? %>
               $<%= @course.fee %>
               <% else %>
@@ -23,24 +23,30 @@
                 <p><%= @course.start_time %></p>
                 <p><%= @course.end_time %></p>
                 <% end  %>
-          
-            <p><%= @course.instructor_name %></p>
-            <p><%= @course.instructor_role %></p>
-            <p><%= image_tag @course.picture if @course.picture.attached? %></p>
- 
-    <p>
-          <% if @course.practice_management.present? %><p>Practice Management Skills <%= @course.practice_management %> points</p><% end %>
+      
+          <%# CPD points below only displays if the values are more than 0 %>
+          <% if @course.practice_management.present? %><p>Practice Management Skills: <%= @course.practice_management %> points</p><% end %>
           
           <% if @course.substantive_law.present? %><p>Substantive Law: <%= @course.substantive_law %> points</p><% end %>
           
           <% if @course.ethics.present? %><p>Ethics: <%= @course.ethics %> points</p><% end %>
     
           <% if @course.professional_skills.present? %><p>Professional Skills: <%= @course.professional_skills %> points</p></p><% end %>
+  </div></div>
+  <div class="row">        
+
+<div class="sm-12"> <% if @course.url.present? %><a href="<%= @course.url %>" target="_blank">Link to Course</a> <% end %></div></div>
+<div class="row"><div class="sm-12">
+                        <div class="row">        
+
+<div class="sm-12">
+                      <%= button_to 'Add to my Courses', enrollments_path(@course),  method: :post, params: {course_id:@course.id} %>
+</div></div>
           <% if user_signed_in? && current_user.id == @course.user.id %>
-            <%= link_to 'Edit', edit_course_path(@course) %>
-            <%= link_to 'Delete', course_path(@course), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Edit this Course', edit_course_path(@course) %>
+            <%= link_to 'Delete this Course', course_path(@course), method: :delete, data: { confirm: 'Are you sure?' } %>
             <% end %>
             <% if user_signed_in? %>
-            <%= button_to 'Add to my Courses', enrollments_path(@course),  method: :post, params: {course_id:@course.id} %>
-            <% end %>
-<% if @course.url.present? %><a href="<%= @course.url %>" target="_blank">Link to Course</a></div> <% end %>
+
+            <% end %></div></div></div>
+

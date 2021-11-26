@@ -54,21 +54,23 @@
     
 
         <div><%= form.label :picture %>
+    
     <%= form.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %></div>
-    <%= form.fields_for :address do |address_form| %>
-   <div><%= address_form.label :address_line_1 %>
-    <%= address_form.text_field :address_line_1 %></div>
-    <div><%= address_form.label :address_line_2 %>
-    <%= address_form.text_field :address_line_2 %></div>
-        <div><%= address_form.label :suburb %>
-    <%= address_form.text_field :suburb %></div>
-            <div><%= address_form.label :state %>
-    <%= address_form.text_field :state %></div>
-                <div><%= address_form.label :state %>
-                <%= address_form.text_field :state %></div>
-    <div><%= address_form.label :postcode %>
-    <%= address_form.number_field :postcode, min: 800, max: 9999 %></div>
-<% end %>
+            <%# address field - currently inoperable %>
+            <%= form.fields_for :address do |address_form| %>
+        <div><%= address_form.label :address_line_1 %>
+            <%= address_form.text_field :address_line_1 %></div>
+            <div><%= address_form.label :address_line_2 %>
+            <%= address_form.text_field :address_line_2 %></div>
+                <div><%= address_form.label :suburb %>
+            <%= address_form.text_field :suburb %></div>
+                    <div><%= address_form.label :state %>
+            <%= address_form.text_field :state %></div>
+                        <div><%= address_form.label :state %>
+                        <%= address_form.text_field :state %></div>
+            <div><%= address_form.label :postcode %>
+            <%= address_form.number_field :postcode, min: 800, max: 9999 %></div>
+        <% end %>
 
 
 

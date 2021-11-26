@@ -65,8 +65,18 @@ For users who just want to attend CPD, more casual users only need to provide li
 
 - Target audience
 This app is designed for lawyers and other legal professionals who need to do 10 CPD points a year.
+It is also designed for course providers to advertise their course.
 
 - Tech stack (e.g. html, css, deployment platform, etc)
+- HTML
+- CSS
+- Heroku
+- Bootstrap
+- jQuery-Mask-Plugin
+- AWS for image hosting
+- gems - Devise, validate_url, 
+
+
 R12	User stories for your app
 
 Website Visitor
@@ -118,10 +128,7 @@ The app contains 3 controllers
     
 2. Courses Controller
     Manages the posting and indexing of courses. Users can create a course and select a relevant category (from the category mnodel) to index against. This includes a show to show individual courses, the site's index page to show all the courses, an update page, a courses posted page which shows a user all the courses they posted, a new courses page.
-    There is validation on the model including title restricting to it between 2 and 100 characters using alphanumeric and punchation; instructor name between 2 and 40 characters alphanumeric and puncuation, instructor role between 2 and 100 characters alphanumeric and puncuation, description between 30 and 4000 characters alphanumeric and puncuation, instructor role between 2 and 100 characters alphanumeric and puncuation, fee which is a number greater than zero or blank (if blank the course is free), numeric fields ethics and professional skills and substantive law and practice_management which can be greater or equal to zero. Both fee and the CPD scores require input masking which is yet to be implimented.  There is also a URL field which is sanitised by way of the "validate_url" gem and can accept up to 150 characters.
-
-Users are prevented from accessing the 'posting' page as even if they do, the controller will redirect them to the homepage
-
+    There is validation on the model including title restricting to it between 2 and 100 characters using alphanumeric and punchation; instructor name between 2 and 40 characters alphanumeric and puncuation, instructor role between 2 and 100 characters alphanumeric and puncuation, description between 30 and 4000 characters alphanumeric and puncuation, instructor role between 2 and 100 characters alphanumeric and puncuation, fee which is a number greater than zero or blank (if blank the course is free), numeric fields ethics and professional skills and substantive law and practice_management which can be greater or equal to zero. Both fee and the CPD scores require input masking which is yet to be implimented.  There is also a URL field which is sanitised by way of the "validate_url" gem and can accept up to 150 characters. 
 
 3. Enrollments Controller
     Enrollments allows users to track courses of interest and takes the ID of the user and ID of the course and stores it in its own table. The output of those stored 'enrollments' is displayed on the 'Tracked Courses' page. 
@@ -147,13 +154,106 @@ Eventually, the app intends to use
 
 
 R17	Describe your projects models in terms of the relationships (active record associations) they have with each other
+1. Users
+    Users can create many courses, subject to validation on the user account. This means that a user has full CRUD control over the courses they and only they create. If a user gets deleted, then the associated courses get deleted.
+    A user has one address with a foreign key of "address_id". User is to accept nested attributes of address to enable the display of the nested fields of the address form, but this feature is currently inoperable.
+    A user has many enrollments, allowing them to enroll in as many courses as they want, subject to them not already being enrolled in said course. 
+    
+2. Courses 
+    Courses belong to user who created it, with the foreign key of its author being 'user_id'. Only users who have the 'instructor' boolean checked are able to post courses.
+    A course can have one category from the category model represented by way of a foreign key stored on the courses table. This is intended to be expanded in the future allowing multiple categories on one course.
+    A course can have one address with the foreign key on the courses table as 'address_id'. Course is to accept nested attributes of address to enable the display of the nested fields of the address form, but this feature is currently inoperable.
+    A course has many users (ie those who are enrolled in them) through enrollments. 
 
+3. Enrollments
+    Enrollments belong to users with a User_id stored in the enrollments table. They also belong to courses table with a course_id stored in the enrollments table.
 
+4. Address
+    Address belongs to user with the foreign key of "address_id" inside the Users table.
+    Address belongs to courses, with the foreign key of "address_id" stored inside the Courses table. 
+    The intention is that addresses will only belong to Users and that Courses will access the addresses through Users to avoid duplication of addresses on different Course records and User records.
+
+5. Category
+    Category belongs_to courses with a foreign key of category_id stored on course records. To be implimented is allowing multiple category IDs to be stored on a course. 
 
 R18	Discuss the database relations to be implemented in your application
+
+The Users table has a one to one relationshipw with the addresses table. A user can have one address. The users table has a one to many relationship wto the courses table. This is indicated through the ERD that shows the one to many relationship.
+The addresses table has a one to one relationship with the users table. It can also have a one to one relationship wtih the courses table. An address must have either a a Course or a User to be created. Eventually an address is to only be associated and available through users to avoid duplication of records. This is indicated through the ERD.
+The courses table has a many to one relationship with the users table in that a User can have many Courses. This is indicated through the ERD.
+The enrollment table can have one user per record, but a user can have many records. Similarly a record can have a single course on it, but courses can have many enrollments. This is indicated through the ERD.
+A course can have a single category, but a category can have many courses. This is indicated through the ERD that shows the one to many relationship.
+
+
 R19	Provide your database schema design
 <<<INSERT PICTURE>>>
 
 
 R20	Describe the way tasks are allocated and tracked in your project
-<<<INSERT LINK>>>
+https://trello.com/b/X0En7Igh/findcpd
+
+At first instance, tasks were managed by way of trello board. As someone who has previously used more task-oriented approaches to project management (as opposed to the Kanban board approach) I found myself more focused on identifying problems and resolving them. The task lists were pen and paper which meant they were right in front of me. I also used Sticky Notes in Windows to keep track of useful links or commands.
+Github version control was used extensively and code rollback was used on occasion to overcome issues. Many git pushes were to provide a restore point should issues arise when creating model, controller or altering tables.
+As someone who had not built a Rails project from scratch, to scaffold out the entire project was difficult for me as it was difficult to anticipate the issues or how long it would take to resolve issues. I learned from my previous assignment that continual testing and incremental building of a project is the only way to make it work, especially being inexperienced in Rails.
+
+
+
+
+15 November 2021
+Github created.
+Rails project re-created as previous project had serious errors.
+Initial Course controller actions were created as were the course form.
+Devise was installed.
+Database relationships were created.
+
+
+16 November 2021
+CSS that reset browser defaults inserted.
+Course controller had further paths added.
+Course controller had validation added.
+User relationships were created.
+Course form was modified.
+Navbar was created.
+Routes refined.
+
+17 November 2021
+params were added to the course controller.
+Relationships between course and controller modified.
+Enrollments table created and relationships defined.
+
+[18-19 November 2021 were primarily drafting another assignment]
+
+19 November 2021
+Acquired data for site
+
+20 November 2021
+Course params altered to reflect new DB fields
+New course fields added
+Had difficulty in signing up for S3
+
+21 November 2021
+[Sat exam for another project]
+Added Amazon S3 hosting
+
+22 November 2021
+Sought to refine enrollments controller
+
+23 November 2021
+Viewing enrollments and own courses working
+Did several deployments to Heroku to test it working- refined code as a result
+Installed Bootstrap
+
+24 November 2021
+Added Categories table 
+Modified CSS file to fix Heroku deployment issues
+
+25 November 2021
+A Model created for Category to allow it to be accessible to Courses.
+Category now displays on Course show page
+Created further validation on instructors
+Installed field masking and sought to add addresses fields to Courses pages and User pages, but neither shows.
+
+26 November 2021
+Resolved duplicated enrollments
+Altered CSS file to fix Heroku issue
+Submitted assignment

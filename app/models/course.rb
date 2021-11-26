@@ -7,7 +7,7 @@ class Course < ApplicationRecord
     has_many :enrollments
     has_many :users, through: :enrollments
     
-    #need to validate here to only proceed IF the instructor? = true
+
     validates_length_of :title, within: 2..100, message:'Title cannot be blank and cannot be more than 100 characters.'    
     validates_format_of :title, with: /\A[a-zA-Z0-9 ,.;'"+-?!%$]*(?:\R[a-zA-Z0-9 ,.;'"+-?!%$]*)*\z/
     
