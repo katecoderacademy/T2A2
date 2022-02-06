@@ -60,7 +60,7 @@ def update
   else
       flash.now[:messages] = @course.errors.full_messages[0]
       render :edit
-    end
+  end
 
 
 end

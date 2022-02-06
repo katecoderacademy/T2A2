@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2021_11_25_120616) do
   create_table "courses", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.decimal "fee", precision: 2
+    t.decimal "fee", precision: 5
     t.datetime "start_time"
     t.boolean "online"
     t.string "instructor_name"

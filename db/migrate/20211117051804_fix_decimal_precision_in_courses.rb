@@ -4,7 +4,7 @@ class FixDecimalPrecisionInCourses < ActiveRecord::Migration[6.1]
     # change_column :courses, :substantive_law, precision: 1, scale: 20
     # change_column :courses, :ethics, precision: 1, scale: 20
     # change_column :courses, :professional_skills, precision: 1, scale: 20
-    change_column :courses, :fee, :decimal, precision: 2
+    change_column :courses, :fee, :decimal, precision: 5
     add_column :courses, :url, :text
     rename_column :courses, :time, :start_time
     # add_column :courses, :end_time, :time

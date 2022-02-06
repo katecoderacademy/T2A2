@@ -45,7 +45,8 @@
           <% if user_signed_in? && current_user.id == @course.user.id %>
             <%= link_to 'Edit this Course', edit_course_path(@course) %>
             <%= link_to 'Delete this Course', course_path(@course), method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %>
+            <% else %> 
+          <% end %>
             <% if user_signed_in? %>
 
             <% end %></div></div></div>
