@@ -13,16 +13,27 @@ class User < ApplicationRecord
   
 
          
-         validates_format_of :first_name, with: /[a-z\s.-]/i
-         validates_format_of :last_name, with: /[a-z\s.-]/i
-         validates_length_of  :first_name, within: 2..40, message:'Please enter a valid first name.'
+        validates :first_name, format: { with: /[a-z\s.-]/i, message: 'Please enter a valid first name' }, length: { minimum: 2, maximum: 40, message: 'Please enter a valid first name' }
+  
+        # validates_format_of :first_name, with: 
+        # validates_length_of  :first_name, within: 2..40, message:'Please enter a valid first name.'
+
         
-         validates_length_of :last_name, within: 2..40, message: 'Please enter a valid surname.'
-        validates :email, uniqueness: true 
-        validates_length_of :phone_number, within: 6..20, allow_blank:true, message: 'Please enter a valid phone number.'
-        validates_numericality_of :phone_number, allow_blank:true, message: 'Please enter a valid phone number without spaces,  brackets or any other symbols.'
-        validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
-        # this forces those who want to post courses to provide a phone number
+        
+        
+        validates :last_name, format: { with: /[a-z\s.-]/i, message: 'Please enter a valid surname.' }, length: { minimum: 2, maximum: 60, message: 'Please enter a valid surname.' }
+
+
+        # validates :phone_number, within: 6..20, allow_blank:true, message: 'Please enter a valid phone number.'
+        
+        validates :phone_number, numericality: true, length: { minimum: 6, maximum: 20, message: 'Please enter a valid phone number without spaces, brackets or other symbols' },  allow_blank:true
+        # validates_numericality_of :phone_number, allow_blank:true, message: 'Please enter a valid phone number without spaces,  brackets or any other symbols.'
+
+        validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }, on: :create
+        
+        # validates :email
+
+
         validates :phone_number, presence: true, if: :instructor?
         
 

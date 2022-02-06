@@ -6,35 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Category.create(category: 'Advocacy')
-Category.create(category: 'Banking & Finance')
-Category.create(category: 'Building & Construction')
-Category.create(category: 'Commercial')
-Category.create(category: 'Corporate')
-Category.create(category: 'Costs')
-Category.create(category: 'Criminal')
-Category.create(category: 'Dispute Resolution/Mediation')
-Category.create(category: 'Employment & Industrial Relations')
-Category.create(category: 'Ethics')
-Category.create(category: 'Family')
-Category.create(category: 'Public & Admin Law')
-Category.create(category: 'Health & Aged Care')
-Category.create(category: 'Leases')
-Category.create(category: 'In-house Counsel')
-Category.create(category: 'Insolvency')
-Category.create(category: 'Intellectual Property')
-Category.create(category: 'Litigation')
-Category.create(category: 'Medico-legal')
-Category.create(category: 'Migration')
-Category.create(category: 'Personal Injury')
-Category.create(category: 'Planning & Environment')
-Category.create(category: 'Privacy & FOI')
-Category.create(category: 'Property')
-Category.create(category: 'Sports Law')
-Category.create(category: 'Superannuation')
-Category.create(category: 'Tax')
-Category.create(category: 'Trusts')
-Category.create(category: 'Wills & Estates')
+categories = ["Advocacy", "Banking & Finance", "Building & Construction", "Commercial", "Corporate", "Costs", "Dispute Resolution/Mediation", "Employment & Industrial Relations", "Ethics", "Family", "Public & Admin Law", "Health & Aged Care", "Leases", "In-house Counsel", "Insolvency", "Intellectual Property", "Litigation", "Medico-legal", "Migration",  "Personal Injury", "Planning & Environment", "Privacy & FOI", "Property", "Sports Law", "Superannuation", "Tax", "Trusts","Wills & Estates"]
+
+if Category.all.length == 0
+    categories.each do |category|
+        Category.create(name: category)
+        puts "created #{category} category"
+    end
+end
 
 Course.create(title: "Alert! Social Media, Voller and Defamation Law Update", description: "The recent High Court decision in the matter between various media organisations and Dylan Voller has brought to light and confirmed the definition of ‘publisher’ of social media posts.Our presenters will discuss the High Court’s decision and the implications for media organisations, businesses and even individuals and their use of social media platforms to share and generate content.The session will also cover the defences available and how this decision interacts with recent Defamation Law reforms.", fee: 155, start_time: "2021-12-07 13:00:00.000000000 +0000", instructor_name: "Richard Leder OAM", substantive_law: 1, url: "https://store.leocussen.edu.au/product/alert-social-media-voller-and-defamation-law-update", end_time: "2021-12-07 14:00:00.000000000 +0000", instructor_role: "Partner, Corrs Chambers Westgarth", category_id: 3)
 Course.create(title: "Online Legal Research - Tips for Working Remotely", description: "This session is designed to unlock the secrets to free legal research sites and tools. With restricted or limited resources available as the majority of us work remotely, this is a critical and practical session for all legal practitioners.This session will provide a step by step guide to research legislation, case law and other legal material online using the latest free tools.Discover a wide range of available online resources you never knew existed. Bring back this knowledge to your firm and divulge ‘the secrets’!This session is a great investment that will save you time and increase your productivity!Presented by: Michael Gavan, Legal Knowledge Researcher, MinterEllison What is included:A video of the presentation in mp4 formatPaper material in pdf format* This Webcast does not allow WA practitioners to claim CPD points", fee: 130, start_time: "2021-11-16 18:16:00.000000000 +0000", instructor_name: "Michael Gavan", professional_skills: 1, url: "https://store.leocussen.edu.au/product/online-legal-research-tips-for-working-remotely-o20060?taxon_id=6", end_time: "2000-01-01 18:17:00.000000000 +0000", instructor_role: "Know-How Team Leader & Research Librarian, MinterEllison", category_id: 3 )
