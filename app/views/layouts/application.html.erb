@@ -1,18 +1,35 @@
 <!DOCTYPE html>
+
 <html>
   <head>
-    <title>Findcpd2</title>
+    <title>Find CPD </title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+<%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+<div class="bg">
   <body>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+      <div><img class="logo" src="logo-v.svg" /></div>
+       <div class="container">
+       <% if flash.present? %> <% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %><% end %>
+       <% if notice.present? %><p class="notice"><%= notice %></p><% end  %>
+       <% if alert.present? %><p class="alert"><%= alert %></p><% end  %>
     <%= yield %>
+    <br>
+    <br>
+    <br>
+    <br>
+    </div>
+    <%= render 'shared/navbar' %>
+    </div>
   </body>
 </html>

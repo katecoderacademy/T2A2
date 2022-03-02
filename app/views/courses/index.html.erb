@@ -1,2 +1,29 @@
-<h1>Courses#index</h1>
-<p>Find me in app/views/courses/index.html.erb</p>
+<%# <div class="container"> %>
+
+
+
+<div class="row">
+
+<% @courses.each_slice(1) do |courses| %>
+  <div class="col-lg-5 mainboxes">
+    <% courses.each do |course| %>
+      <h3><%= course.title %></h3>
+         <p><% if course.fee.present? %>
+              $<%= course.fee %>
+              <% else %>
+              Free Course
+              <% end  %></p>
+                <p>
+          
+          
+           <%= link_to 'View', course_path(course) %>
+
+     <% end %>
+     
+     </div>
+     
+     
+     <% end %>
+     
+<%# </div> %>
+</div>

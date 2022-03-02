@@ -55,8 +55,11 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# Add devise for authentication
+# Devise manages authentication
 gem 'devise'
 
-# adding cloundinary to manage images
-gem 'cloudinary'
+# AWS manages the image hosting
+gem "aws-sdk-s3", "~> 1.106"
+
+# manages URL validation from course insertion page
+gem "validate_url"

@@ -1,0 +1,29 @@
+<%= f.fields_for :addresses do |addresses_form| %>
+
+        <%= addresses_form.label :address_line_1 %>
+        <%= addresses_form.text_field :address_line_1 %>
+
+        <%= addresses_form.label :address_line_2 %>
+        <%= addresses_form.text_field :address_line_2 %>
+        <%= addresses_form.label :suburb %>
+        <%= addresses_form.text_field :suburb %>
+        <%= addresses_form.label :state %>
+        <%= addresses_form.text_field :state %>
+        <%= addresses_form.label :postcode %>
+        <%= addresses_form.text_field :postcode %>
+
+<% end %>
+
+
+<div><%= form.label :address_line_1 %>
+    <%= form.text_field :address_line_1 %></div>
+    <div><%= form.label :address_line_2 %>
+    <%= form.text_field :address_line_2 %></div>
+        <div><%= form.label :suburb %>
+    <%= form.text_field :suburb %></div>
+            <div><%= form.label :state %>
+    <%= form.text_field :state %></div>
+                <div><%= form.label :state %>
+                <%= form.text_field :state %></div>
+    <div><%= form.label :postcode %>
+    <%= form.number_field :postcode, min: 800, max: 9999 %></div>

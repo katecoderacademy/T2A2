@@ -1,0 +1,82 @@
+<% if @course.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+            <ul>
+                <% course.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+
+<!--
+    <%= form.description :category %> #fix this
+    <%= form.collection_select :category_id, :Category.all, :id, :name prompt: "Select Category" %> #fix this
+
+    <%= form.submit %>
+-->
+<!--
+<p>~~~~~~~~~~//////////------------\\\\\\\\\\~~~~~~~~~~</p>
+<%= form_with model: @product, url: "create" do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :price %><br>
+    <%= form.number_field :price, min: 0, max: 100 %>
+  </div>
+  <div>
+    <%= form.label :category %><br>
+    <%= form.text_area :category %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+-->
+
+
+
+
+<%=
+    form.time_field :my_time_field,
+      value: @model_instance.my_time_field.strftime("%H:%M")
+  %>
+
+
+  <%= button_to "Add #{course.name} to Account", enrollment_path(:course_id => course.id)  %>
+ <%= link_to "Add to Account", enrollment_add_path(:id => enrollment), method: :post %>
+ <%= link_to "Remove from Account", enrollment_path(enrollment_item), method: :delete %>
+
+
+
+
+ <div class="col-6">
+<% @courses.each do |course| %>
+  <h3><%= course.title %></h3>
+  <p><%= course.description %></p>
+  <p>$<%= course.fee %></p>
+    <p><%= course.start_time %></p>
+        <p><%= course.end_time %></p>
+    <p><%= course.instructor_name %></p>
+        <p><%= course.instructor_role %></p>
+    <p>Practice Management Skills <%= course.practice_management %> points</p>
+    <p>Substantive Law: <%= course.substantive_law %> points</p>
+    <p>Ethics: <%= course.ethics %> points</p>
+    <p>Professional Skills: <%= course.professional_skills %> points</p>
+
+  <%= link_to 'View', course_path(course) %>
+  <% if user_signed_in? && current_user.id == course.user.id %>
+    <%= link_to 'Edit', edit_course_path(course) %>
+    <%= link_to 'Delete', course_path(course), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %></div>
+</div>

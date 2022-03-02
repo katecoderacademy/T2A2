@@ -1,9 +1,21 @@
 Rails.application.routes.draw do
-  get 'courses/index'
-  get 'courses/show'
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # get 'courses/index'
+  # get 'courses/show'
+  
+  # map.devise_for :users
+  # map.resources :users, :has_one: address
 
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+    get 'logout', to: 'devise/sessions#destroy'
+  end
+
+  devise_for :users
+  resources :courses, :enrollments
+  resources :users, only: [:show, :edit, :update]
   root to: "courses#index"
+
+  get 'postedcourses' => "courses#posted"
+  get 'search' => "courses#search"
 
 end

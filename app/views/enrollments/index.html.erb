@@ -1,0 +1,27 @@
+
+<h3>My Tracked Courses</h3>
+<div class="container">
+<ul>
+<% @enrollments.each do |enrollment| %>
+
+<li><%= enrollment.course.title %>
+<% if enrollment.course.practice_management.present? %><p>Practice Management Skills: <%= enrollment.course.practice_management %> points</p><% end %>
+          <% if enrollment.course.fee.present? %>
+          <p>$<%= enrollment.course.fee %>
+            <% else %>
+            Free Course
+            <% end  %></p>
+          <% if enrollment.course.substantive_law.present? %><p>Substantive Law: <%= enrollment.course.substantive_law %> points</p><% end %>
+          
+          <% if enrollment.course.ethics.present? %><p>Ethics: <%= enrollment.course.ethics %> points</p><% end %>
+    
+          <% if enrollment.course.professional_skills.present? %><p>Professional Skills: <%= enrollment.course.professional_skills %> points</p></p><% end %>
+          <p><%= link_to 'View', course_path(enrollment.course_id) %></p>
+          
+</li>
+
+
+<% end %></ul></div>
+
+
+

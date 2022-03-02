@@ -1,0 +1,20 @@
+<nav class="nav">
+
+
+<%= link_to 'Home', root_path %>
+
+<% if user_signed_in?  %>
+<% if current_user.instructor.present? %>
+    <%= link_to 'Add a course', new_course_path %>
+    <%= link_to 'Posted Courses', postedcourses_path %>
+    <% end %>
+    <%= link_to 'Tracked Courses', enrollments_path %>
+    <%= link_to 'Edit Account', edit_user_registration_path %>
+    <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+<% else %>
+<%= link_to 'Log in', new_user_session_path %>
+<%= link_to 'Sign up', new_user_registration_path %>
+<% end %>
+
+<div class="div-img"><img src="logo-v.svg"></div>
+</nav>
